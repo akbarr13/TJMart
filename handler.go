@@ -12,7 +12,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprint(w, `
 				<html>
 					<body>
-						<h1>Halo ini website golang!!!</h1>
+						<h1>Halo ini website golang yang dihosting di android!!!</h1>
 					</body
 				</html
 				`)
