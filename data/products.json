@@ -1,0 +1,107 @@
+[
+  {
+    "id": 1,
+    "name": "Kaos Polos Putih",
+    "price": 75000,
+    "stock": 50,
+    "category": "Pakaian"
+  },
+  {
+    "id": 2,
+    "name": "Kaos Polos Hitam",
+    "price": 75000,
+    "stock": 45,
+    "category": "Pakaian"
+  },
+  {
+    "id": 3,
+    "name": "Kemeja Flannel",
+    "price": 150000,
+    "stock": 30,
+    "category": "Pakaian"
+  },
+  {
+    "id": 4,
+    "name": "Celana Jeans Slim Fit",
+    "price": 250000,
+    "stock": 25,
+    "category": "Celana"
+  },
+  {
+    "id": 5,
+    "name": "Celana Chino Beige",
+    "price": 200000,
+    "stock": 30,
+    "category": "Celana"
+  },
+  {
+    "id": 6,
+    "name": "Sepatu Sneakers Putih",
+    "price": 350000,
+    "stock": 20,
+    "category": "Sepatu"
+  },
+  {
+    "id": 7,
+    "name": "Sepatu Boots Coklat",
+    "price": 450000,
+    "stock": 15,
+    "category": "Sepatu"
+  },
+  {
+    "id": 8,
+    "name": "Sandal Slide",
+    "price": 85000,
+    "stock": 40,
+    "category": "Sepatu"
+  },
+  {
+    "id": 9,
+    "name": "Topi Baseball Hitam",
+    "price": 65000,
+    "stock": 35,
+    "category": "Aksesoris"
+  },
+  {
+    "id": 10,
+    "name": "Topi Bucket Krem",
+    "price": 70000,
+    "stock": 28,
+    "category": "Aksesoris"
+  },
+  {
+    "id": 11,
+    "name": "Tas Ransel Laptop",
+    "price": 320000,
+    "stock": 18,
+    "category": "Tas"
+  },
+  {
+    "id": 12,
+    "name": "Tas Selempang Mini",
+    "price": 120000,
+    "stock": 22,
+    "category": "Tas"
+  },
+  {
+    "id": 13,
+    "name": "Jaket Hoodie Abu",
+    "price": 280000,
+    "stock": 20,
+    "category": "Pakaian"
+  },
+  {
+    "id": 14,
+    "name": "Jaket Bomber Hijau",
+    "price": 380000,
+    "stock": 12,
+    "category": "Pakaian"
+  },
+  {
+    "id": 15,
+    "name": "Ikat Pinggang Kulit",
+    "price": 95000,
+    "stock": 33,
+    "category": "Aksesoris"
+  }
+]

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>GoShop</title>
+        <link rel="stylesheet" href="/static/style.css" />
+    </head>
+    <body>
+        <div id="products"></div>
+    </body>
+
+    <script>
+        fetch("api/products")
+            .then((res) => res.json())
+            .then((products) => {
+                const container = document.getElementById("products");
+
+                products.forEach((p) => {
+                    container.innerHTML += `
+                              <h2>${p.name}</h2>
+                              <p>Harga: Rp${p.price}</p>
+                              <p>Stok: ${p.stock}</p>
+                              <p>Kategori: ${p.category}</p>
+                              `;
+                });
+            });
+    </script>
+</html>
