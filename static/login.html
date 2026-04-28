@@ -5,8 +5,146 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>GoShop</title>
         <link rel="stylesheet" href="/static/style.css" />
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+            body {
+                font-family: sans-serif;
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: #f5f5f5;
+            }
+            .card {
+                background: white;
+                border: 1px solid #e0e0e0;
+                border-radius: 12px;
+                padding: 2rem 1.75rem;
+                width: 100%;
+                max-width: 360px;
+            }
+            .brand {
+                font-size: 22px;
+                font-weight: 600;
+                margin-bottom: 4px;
+            }
+            .sub {
+                font-size: 13px;
+                color: #888;
+                margin-bottom: 1.75rem;
+            }
+            .field {
+                margin-bottom: 1rem;
+            }
+            label {
+                display: block;
+                font-size: 13px;
+                color: #555;
+                margin-bottom: 6px;
+            }
+            input {
+                width: 100%;
+                padding: 0 12px;
+                height: 38px;
+                font-size: 14px;
+                border-radius: 8px;
+                border: 1px solid #ddd;
+                outline: none;
+            }
+            input:focus {
+                border-color: #333;
+            }
+            .btn-login {
+                width: 100%;
+                height: 38px;
+                margin-top: 0.5rem;
+                background: #111;
+                color: white;
+                border: none;
+                border-radius: 8px;
+                font-size: 14px;
+                font-weight: 500;
+                cursor: pointer;
+            }
+            .btn-login:hover {
+                opacity: 0.85;
+            }
+            .divider {
+                text-align: center;
+                font-size: 12px;
+                color: #aaa;
+                margin: 1rem 0;
+            }
+            .register {
+                text-align: center;
+                font-size: 13px;
+                color: #555;
+            }
+            .register a {
+                color: #111;
+                text-decoration: underline;
+                cursor: pointer;
+            }
+        </style>
     </head>
     <body>
-        
+        <div class="card">
+            <p class="brand">GoShop</p>
+            <p class="sub">Masuk ke akun kamu</p>
+
+            <div class="field">
+                <label for="username">Username</label>
+                <input
+                    type="text"
+                    id="username"
+                    placeholder="Masukkan username"
+                />
+            </div>
+            <div class="field">
+                <label for="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Masukkan password"
+                />
+            </div>
+
+            <button class="btn-login" onclick="handleLogin()">Masuk</button>
+
+            <div class="divider">atau</div>
+            <div class="register">
+                Belum punya akun? <a href="/register">Daftar</a>
+            </div>
+        </div>
+
+        <script>
+            async function handleLogin() {
+                const u = document.getElementById("username").value;
+                const p = document.getElementById("password").value;
+                if (!u || !p) {
+                    alert("Username dan password wajib diisi!");
+                    return;
+                }
+
+                try {
+                    const response = await fetch("api/login", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ username: u, password: p }),
+                    }).catch(() => alert("Login gagal."));
+
+                    const result = await response.json();
+                    if (result.success) {
+                        window.location.href = "/";
+                    }
+                } catch (error) {
+                    console.error(error.message);
+                }
+            }
+        </script>
     </body>
 </html>

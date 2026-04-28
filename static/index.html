@@ -5,25 +5,150 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>GoShop</title>
         <link rel="stylesheet" href="/static/style.css" />
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+            body {
+                font-family: sans-serif;
+                background: #f5f5f5;
+            }
+
+            header {
+                background: #fff;
+                border-bottom: 1px solid #e5e5e5;
+                padding: 0 1.5rem;
+                height: 56px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            .brand {
+                font-size: 18px;
+                font-weight: 600;
+            }
+            .cart-btn {
+                font-size: 13px;
+                padding: 6px 14px;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                background: white;
+                cursor: pointer;
+            }
+
+            main {
+                padding: 1.5rem;
+            }
+            .section-title {
+                font-size: 16px;
+                font-weight: 600;
+                margin-bottom: 1rem;
+            }
+
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+                gap: 12px;
+            }
+            .card {
+                background: white;
+                border: 1px solid #e5e5e5;
+                border-radius: 12px;
+                padding: 1rem;
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+            }
+            .category-badge {
+                font-size: 11px;
+                padding: 2px 8px;
+                border-radius: 20px;
+                background: #f0f0f0;
+                color: #555;
+                align-self: flex-start;
+            }
+            .product-name {
+                font-size: 14px;
+                font-weight: 600;
+                color: #111;
+            }
+            .product-price {
+                font-size: 15px;
+                font-weight: 700;
+                color: #111;
+            }
+            .product-stock {
+                font-size: 12px;
+                color: #888;
+            }
+            .btn-add {
+                margin-top: 6px;
+                width: 100%;
+                padding: 7px 0;
+                background: #111;
+                color: white;
+                border: none;
+                border-radius: 8px;
+                font-size: 13px;
+                cursor: pointer;
+            }
+            .btn-add:hover {
+                opacity: 0.85;
+            }
+        </style>
     </head>
     <body>
-        <div id="products"></div>
+        <header>
+            <span class="brand">GoShop</span>
+            <button class="cart-btn">Keranjang (0)</button>
+        </header>
+
+        <main>
+            <input
+                type="text"
+                id="search"
+                placeholder="Cari produk..."
+                oninput="searchProduct()"
+                style="
+                    width: 100%;
+                    padding: 10px 14px;
+                    border: 1px solid #ddd;
+                    border-radius: 8px;
+                    font-size: 14px;
+                    margin-bottom: 1rem;
+                    background: white;
+                    outline: none;
+                "
+            />
+            <p class="section-title">Semua Produk</p>
+            <div class="grid" id="products"></div>
+        </main>
+
+        <script>
+            window.onload = searchProduct;
+
+            function searchProduct() {
+                let keyword = document.getElementById("search").value;
+                fetch("/api/products?search=" + keyword)
+                    .then((res) => res.json())
+                    .then((products) => {
+                        const container = document.getElementById("products");
+                        container.innerHTML = "";
+                        products.forEach((p) => {
+                            container.innerHTML += `
+                                <div class="card">
+                                    <span class="category-badge">${p.category}</span>
+                                    <p class="product-name">${p.name}</p>
+                                    <p class="product-price">Rp${p.price.toLocaleString("id-ID")}</p>
+                                    <p class="product-stock">Stok: ${p.stock}</p>
+                                    <button class="btn-add">+ Keranjang</button>
+                                </div>
+                            `;
+                        });
+                    });
+            }
+        </script>
     </body>
-
-    <script>
-        fetch("api/products")
-            .then((res) => res.json())
-            .then((products) => {
-                const container = document.getElementById("products");
-
-                products.forEach((p) => {
-                    container.innerHTML += `
-                              <h2>${p.name}</h2>
-                              <p>Harga: Rp${p.price}</p>
-                              <p>Stok: ${p.stock}</p>
-                              <p>Kategori: ${p.category}</p>
-                              `;
-                });
-            });
-    </script>
 </html>
