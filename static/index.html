@@ -97,6 +97,11 @@
             .btn-add:hover {
                 opacity: 0.85;
             }
+
+            .top {
+                display: flex;
+                justify-content: space-around;
+            }
         </style>
     </head>
     <body>
@@ -106,22 +111,28 @@
         </header>
 
         <main>
-            <input
-                type="text"
-                id="search"
-                placeholder="Cari produk..."
-                oninput="searchProduct()"
-                style="
-                    width: 100%;
-                    padding: 10px 14px;
-                    border: 1px solid #ddd;
-                    border-radius: 8px;
-                    font-size: 14px;
-                    margin-bottom: 1rem;
-                    background: white;
-                    outline: none;
-                "
-            />
+            <div class="top">
+                <input
+                    type="text"
+                    id="search"
+                    placeholder="Cari produk..."
+                    oninput="searchProduct()"
+                    style="
+                        width: 100%;
+                        padding: 10px 14px;
+                        border: 1px solid #ddd;
+                        border-radius: 8px;
+                        font-size: 14px;
+                        margin-bottom: 1rem;
+                        background: white;
+                        outline: none;
+                    "
+                />
+                <select>
+                    <option value="price">Price</option>
+                    <option value="Name">Name</option>
+                </select>
+            </div>
             <p class="section-title">Semua Produk</p>
             <div class="grid" id="products"></div>
         </main>

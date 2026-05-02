@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"TJMart/algorithm"
 	"TJMart/models"
 	"encoding/json"
 	"net/http"
@@ -11,14 +12,7 @@ func GetAllProducts(w http.ResponseWriter, r *http.Request) {
 	products := models.GetProducts()
 
 	if keyword != "" {
-		var filtered []models.Product
-		//Sequential Search
-		for _, p := range products {
-			if p.Name == keyword {
-				filtered = append(filtered, p)
-			}
-		}
-		products = filtered
+		products = algorithm.SequentialSearch(keyword, products, "name")
 	}
 	json.NewEncoder(w).Encode(products)
 }
